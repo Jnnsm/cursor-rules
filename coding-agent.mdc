@@ -1,0 +1,48 @@
+---
+description: Global agent workflow — change tracking, logging, Python tooling, and task completion
+alwaysApply: true
+---
+
+# Coding Agent Standards
+
+Minimal diffs, YAGNI, and reuse are governed by the **ponytail** rule — do not duplicate that guidance here.
+
+## Quality and completion
+
+- Goal: state-of-the-art, clean, maintainable code.
+- Make no mistakes. Think as long as needed; consider every reasonable implementation or fix path. Choose the path that covers **100%** of what the task demands (complexity trade-offs defer to ponytail).
+- Before acting, review reasoning and conversation history to avoid repeating work.
+- Finish tasks completely — do not stop at partial solutions.
+
+## Scratch work
+
+- Create intermediate files freely while drafting or exploring approaches.
+- Delete all scratch files before the task is done.
+
+## Change log
+
+- Track agent-made changes in a concise markdown file at the project root (e.g. `AGENT_CHANGES.md`).
+- One line per change; capture the essence only.
+
+## Logging
+
+Use structured printf-style formatting:
+
+```py
+logger.METHOD("text: %s, %d", "input text", 100)
+```
+
+Adapt `METHOD` and types to the language/logger in use; keep the `"key: %v"` pattern.
+
+## Python tooling
+
+- **Package manager / venv:** use `uv` by default.
+- **Pre-commit:** only when `.pre-commit-config.yaml` exists in the **current project root**. If it is missing, skip pre-commit entirely — do not assume every repo has it.
+- When pre-commit applies, run:
+
+  ```bash
+  pre-commit run --all-files -v
+  ```
+
+  Fix every reported issue **except** Lizard warnings/errors (those may be deferred).
+- Do not manually fix indentation that pre-commit will auto-fix unless the user explicitly asked for it.
