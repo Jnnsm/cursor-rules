@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: prove
+        name: prove
+        entry: uv run prove
+        language: system
+        pass_filenames: false
+        always_run: true

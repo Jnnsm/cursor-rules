@@ -1,0 +1,5 @@
+- Turned the rules repo into a Python template: layered `app`, auto-discovered `checks`, `uv run prove`, pre-commit.
+- Moved `ponytail.mdc` and `coding-agent.mdc` into `.cursor/rules/` and added `trust-pyramid.mdc`.
+- Stripped sample ledger; left empty `app/` layers + `.keepdir`, prove/checks scaffolding only.
+- Removed redundant `.keepdir` from non-empty dirs (`checks/`, `app/*` with `__init__.py`).
+- Dropped predefined `app/` layer scaffolds and the import-linter layers contract; docs say the project owns package layout.

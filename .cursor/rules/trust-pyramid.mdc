@@ -1,0 +1,29 @@
+---
+description: Copy the repo, record mistakes as checks, and prove with uv run prove
+alwaysApply: true
+---
+
+# Trust pyramid
+
+Copy `checks/` (lesson checks + prove runner). Product package layout is yours — this template does not ship predefined `app/` layers. Constraints live in `pyproject.toml` and in `checks/`, not in this rule. Add import-linter contracts when real packages exist.
+
+A mistake that should never recur becomes a check:
+
+1. One entry in `pyproject.toml` under `[tool.ruff.lint]` or `[tool.importlinter]`, when that tool already has the rule.
+2. Otherwise one file `checks/<lesson>.py`. It is auto-discovered. Copy `checks/comments.py`. Return `[]` when clean, or `["path:line: what failed"]`.
+
+```python
+def check() -> list[str]:
+    return []
+```
+
+Leave this rule and `AGENTS.md` unchanged when you add a lesson.
+
+Done means `uv run prove` exited 0 in this session. Paste the output.
+
+Human review is last, and only for what that command cannot see:
+
+- the change was needed
+- behavior the tests do not cover
+- trust boundaries and secrets
+- a `ponytail:` ceiling is still acceptable
