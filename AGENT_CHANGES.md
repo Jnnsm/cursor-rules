@@ -1,3 +1,4 @@
+- Added goal-swarm always-apply rule and skill: four-role agreement + hard verification before complete.
 - Turned the rules repo into a Python template: layered `app`, auto-discovered `checks`, `uv run prove`, pre-commit.
 - Moved `ponytail.mdc` and `coding-agent.mdc` into `.cursor/rules/` and added `trust-pyramid.mdc`.
 - Stripped sample ledger; left empty `app/` layers + `.keepdir`, prove/checks scaffolding only.

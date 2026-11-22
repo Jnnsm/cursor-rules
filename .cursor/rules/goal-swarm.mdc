@@ -1,0 +1,25 @@
+---
+description: Goal swarm + verification gate — do not mark complete without working-program evidence and role agreement
+alwaysApply: true
+---
+
+# Goal swarm and completion gate
+
+**Objective:** finish a goal only with proof of a working program — never on agent claim alone.
+
+## When to swarm
+
+For non-trivial goals (new feature, multi-file change, UI work, behavior change, "get this done"), spawn the four roles below and require agreement before delivery. Skip the swarm for trivia: pure Q&A, one-line fixes, renames, or when the user explicitly says to skip.
+
+Read and follow `.cursor/skills/goal-swarm/SKILL.md` for roles, handoffs, and the agreement record.
+
+## Hard completion gate
+
+Do **not** mark the goal complete until **all** hold:
+
+1. **Evidence, not claim** — this session shows command/file proof that the program works. Prefer `uv run prove` exit 0 (paste output). Else: the project's tests/commands, or read-back of required files. Agent narrative alone is never enough.
+2. **Role agreement** — Coder, Tester, and PM agree on the same deliverable. UI/UX agrees when the change has a user-facing surface; otherwise record `UI/UX: N/A`.
+3. **Trust model** — log agent changes in `AGENT_CHANGES.md` (one line each); keep diffs minimal (ponytail); no scratch left behind.
+4. **Pre-commit** — if `.pre-commit-config.yaml` exists at project root, `pre-commit run --all-files -v` is clean (Lizard may be deferred).
+
+If any gate fails: fix or escalate — do not declare done.
