@@ -1,4 +1,11 @@
+- Fixed swarm_share_smoke: removed mistaken project `mcp` 2.x dep; run via forgeswarm venv; tolerate isError/is_error.
+- Global MCP: merged `goal-swarm` into `~/.cursor/mcp.json` (backup `.bak-goal-swarm`); live as `user-goal-swarm` (ready); skill notes project Customize and/or global path + `user-` prefix.
+- Fixed goal-swarm MCP load: `.cursor/mcp.json` now `type:stdio` + absolute uv/forgeswarm/DB paths; examples + skill enable/reload; `checks/mcp_goal_swarm.py`; prove/pre-commit green (namespace still needs Cursor reload).
+- Shared-control smoke: `scripts/swarm_share_smoke.py` (two stdio MCP sessions, same FORGESWARM_DB); absolute mcp example; plan/spike note Cursor `goal-swarm` namespace still not live.
+- Wired ForgeSwarm goal-swarm: enabled `.cursor/mcp.json` (stdio + shared `.swarm/` DB), rewrote skill/rule for MCP board protocol; plan/spike status → wiring done / pending Cursor reload.
+- ForgeSwarm Phase 0 spike PASS: `SWARM_MCP_SPIKE.md`, draft `.cursor/mcp.json.example`, `.swarm/` gitignore; clone at `~/src/forgeswarm` with `mcp<2` pin.
 - Added goal-swarm always-apply rule and skill: four-role agreement + hard verification before complete.
+- Research-only plan for real MCP swarm upgrade: `SWARM_MCP_PLAN.md` (no install).
 - Turned the rules repo into a Python template: layered `app`, auto-discovered `checks`, `uv run prove`, pre-commit.
 - Moved `ponytail.mdc` and `coding-agent.mdc` into `.cursor/rules/` and added `trust-pyramid.mdc`.
 - Stripped sample ledger; left empty `app/` layers + `.keepdir`, prove/checks scaffolding only.

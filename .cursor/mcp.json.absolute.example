@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "goal-swarm": {
+      "type": "stdio",
+      "command": "/usr/bin/uv",
+      "args": [
+        "run",
+        "--directory",
+        "/home/YOU/src/forgeswarm",
+        "forgeswarm"
+      ],
+      "env": {
+        "FORGESWARM_DB": "/home/YOU/path/to/cursor-rules/.swarm/forgeswarm.db"
+      }
+    }
+  }
+}

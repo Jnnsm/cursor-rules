@@ -1,5 +1,5 @@
 ---
-description: Goal swarm + verification gate — do not mark complete without working-program evidence and role agreement
+description: Goal swarm + verification gate — ForgeSwarm MCP board + working-program evidence before complete
 alwaysApply: true
 ---
 
@@ -9,16 +9,16 @@ alwaysApply: true
 
 ## When to swarm
 
-For non-trivial goals (new feature, multi-file change, UI work, behavior change, "get this done"), spawn the four roles below and require agreement before delivery. Skip the swarm for trivia: pure Q&A, one-line fixes, renames, or when the user explicitly says to skip.
+For non-trivial goals (new feature, multi-file change, UI work, behavior change, "get this done"), coordinate the four roles (PM, Coder, UI/UX, Tester) on the **ForgeSwarm** project MCP bus (`goal-swarm` in `.cursor/mcp.json`) and require agreement before delivery. Skip the swarm for trivia: pure Q&A, one-line fixes, renames, or when the user explicitly says to skip.
 
-Read and follow `.cursor/skills/goal-swarm/SKILL.md` for roles, handoffs, and the agreement record.
+Read and follow `.cursor/skills/goal-swarm/SKILL.md` for roles, MCP tool protocol (`get_briefing` / `claim_task` / plan→implement→review / discussions→decisions / `run_checks`), and the agreement record tied to MCP state. If MCP is unavailable, simulate roles but keep the evidence gate — do not invent board state.
 
 ## Hard completion gate
 
 Do **not** mark the goal complete until **all** hold:
 
-1. **Evidence, not claim** — this session shows command/file proof that the program works. Prefer `uv run prove` exit 0 (paste output). Else: the project's tests/commands, or read-back of required files. Agent narrative alone is never enough.
-2. **Role agreement** — Coder, Tester, and PM agree on the same deliverable. UI/UX agrees when the change has a user-facing surface; otherwise record `UI/UX: N/A`.
+1. **Evidence, not claim** — this session shows command/file proof that the program works. Prefer ForgeSwarm `run_checks` / `uv run prove` exit 0 (paste or cite recorded output). Else: the project's tests/commands, or read-back of required files. Agent narrative alone is never enough.
+2. **Role agreement** — Coder, Tester, and PM agree on the same deliverable (MCP reviews / decisions when the bus is up). UI/UX agrees when the change has a user-facing surface; otherwise record `UI/UX: N/A`.
 3. **Trust model** — log agent changes in `AGENT_CHANGES.md` (one line each); keep diffs minimal (ponytail); no scratch left behind.
 4. **Pre-commit** — if `.pre-commit-config.yaml` exists at project root, `pre-commit run --all-files -v` is clean (Lizard may be deferred).
 
